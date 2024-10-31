@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { schedule } from 'node-cron';
-import connectDB from '../config/db';
 import { Posts } from '../models/posts';
 
 const DAILY_AT_10AM = '0 10 * * *'; // Uma vez ao dia, às 10h da manhã
@@ -38,9 +37,6 @@ const fetchRedditPosts = async () => {
 
 const startScheduler = () => schedule(DAILY_AT_10AM, fetchRedditPosts);
 
-const main = async () => {
-  await connectDB();
-  startScheduler();
-};
+const main = async () => startScheduler();
 
 main();
