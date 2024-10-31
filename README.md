@@ -93,6 +93,10 @@ Este endpoint realiza uma requisição HTTP GET para recuperar uma lista de post
 
 Após uma execução bem-sucedida, o servidor responderá com um código de status 200 e um array JSON contendo os posts ordenados, com a mesma estrutura descrita na seção de resposta acima.
 
+### *Exemplo de requisição à API para obter posts ordenados, utilizando o [Postman](https://www.postman.com/).*
+
+<img src="https://github.com/user-attachments/assets/65640926-3ff4-4335-a098-f0f384c4e8b3" alt="Exemplo de requisição a API para obter posts ordenados via Postman">
+
 
 ## 🧪 Testes
 
@@ -108,7 +112,7 @@ Para executar os testes, siga os passos abaixo:
 npm install
 ```
 
-2. **Executar os Testes:** Use o seguinte comando para rodar os testes:
+2. Execute os Testes
 
 ```bash
 npm test
