@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const connectDB = async () => {
+export const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI!);
     console.log('MongoDB connected successfully');
@@ -13,4 +13,11 @@ const connectDB = async () => {
   }
 };
 
-export default connectDB;
+export const disconnectDB = async () => {
+  try {
+    await mongoose.connection.close();
+    console.log('MongoDB disconnected');
+  } catch (error) {
+    console.error(`Error disconnecting from MongoDB: ${error}`);
+  }
+};
