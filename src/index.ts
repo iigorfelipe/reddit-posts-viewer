@@ -2,7 +2,7 @@ import express from 'express';
 import connectDB from './config/db';
 import postsRoute from './routes/posts';
 import sortedPostsRoute from './routes/sorted-posts';
-import './scheduler';
+import './scheduler/fetch-and-save-reddit-posts';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
