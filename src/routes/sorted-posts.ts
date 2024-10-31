@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { Posts } from '../models/posts';
+import { formatDateToTimestamp } from '../utils/format-date-to-timestamp';
 
 const router = Router();
 
@@ -23,8 +24,8 @@ router.get('/', async (req: Request, res: Response) => {
 
     const posts = await Posts.find({
       created_utc: {
-        $gte: new Date(start_date as string).getTime() / 1000,
-        $lte: new Date(end_date as string).getTime() / 1000,
+        $gte: formatDateToTimestamp(start_date as string),
+        $lte: formatDateToTimestamp(end_date as string),
       },
     }).sort({ [sortField]: -1 });
 

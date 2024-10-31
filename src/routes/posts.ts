@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { Posts } from '../models/posts';
+import { formatDateToTimestamp } from '../utils/format-date-to-timestamp';
 
 const router = Router();
 
@@ -10,8 +11,8 @@ router.get('/', async (req: Request, res: Response) => {
     res.status(400).json({ message: 'Por favor, forneça start_date e end_date.' });
   }
 
-  const startDateTimestamp = new Date(start_date as string).getTime() / 1000;
-  const endDateTimestamp = new Date(end_date as string).getTime() / 1000;
+  const startDateTimestamp = formatDateToTimestamp(start_date as string);
+  const endDateTimestamp = formatDateToTimestamp(end_date as string);
 
   if (isNaN(startDateTimestamp) || isNaN(endDateTimestamp)) {
     res.status(400).json({ message: 'Data inválida fornecida.' });
