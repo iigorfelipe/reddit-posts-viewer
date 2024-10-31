@@ -4,11 +4,13 @@ Criar um programa que consulta diariamente a API do Reddit para coletar e armaze
 
 ## 🛠️ Tecnologias Utilizadas:
 
-- **Node.js**
-- **Typescript**
-- **Express**
-- **MongoDB**
-- **Mongoose**
+- **[Node.js](https://nodejs.org/pt)**
+- **[Typescript](https://www.npmjs.com/package/typescript)**
+- **[Express](https://www.npmjs.com/package/express)**
+- **[MongoDB](https://www.mongodb.com/pt-br)**
+- **[Mongoose](https://www.npmjs.com/package/mongoose)**
+- **[Jest](https://www.npmjs.com/package/jest)**
+- **[Supertest](https://www.npmjs.com/package/supertest)**
 
 
 ## 📋 Executando o Projeto Localmente:
@@ -31,40 +33,51 @@ cd reddit-posts-viewer
 npm install
 ```
 
-4. Execute o projeto:
+4. **Crie o arquivo .env:** Copie o arquivo de exemplo para criar seu próprio arquivo de configuração:
+```bash
+cp .env.example .env
+```
+
+5. Execute o projeto:
 
 ```bash
 npm run dev
 ```
 
+⚠️ Certifique-se de que o MongoDB esteja em execução:
+```bash
+sudo systemctl start mongod
+```
+
+Se encontrar qualquer dificuldade, sinta-se à vontade para me contatar através dos links fornecidos ao final desta documentação.
+
+
 ## 🌐 API
 
-     ``http://localhost:3000/posts?start_date=2024-10-01T00:00:00.000Z&end_date=2024-10-30T00:00:00.000Z``
+     http://localhost:3000/posts?start_date=2024-10-01T00:00:00.000Z&end_date=2024-10-30T00:00:00.000Z
 
 Este endpoint recupera posts com base no intervalo de datas especificado.
 
 ### Parâmetros
 
-- ``start_date`` (string): A data de início para o intervalo de datas no formato ISO 8601 (por exemplo, "2024-10-01T00:00:00.000Z").
+- ``start_date`` (string): A data de início para o intervalo de datas no formato ISO 8601.
 
-- ``end_date`` (string): A data de fim para o intervalo de datas no formato ISO 8601 (por exemplo, "2024-10-30T00:00:00.000Z").
+- ``end_date`` (string): A data de fim para o intervalo de datas no formato ISO 8601.
 
 ### Resposta
 
 Após uma requisição bem-sucedida, o servidor responderá com um código de status 200 e um array JSON contendo objetos de post. Cada objeto de post inclui os seguintes campos:
 
 
-- ``_id`` (string): O identificador único do documento.
 - ``id`` (string): O identificador do post.
 - ``title`` (string):  O título do post.
 - ``author`` (string): O autor do post.
 - ``created_utc`` (number): O timestamp de criação do post.
 - ``ups`` (number): O número de upvotes para o post.
 - ``num_comments`` (number): The O número de comentários no post.
-- ``__v`` (number): Número da versão do post.
 
 
-      ``http://localhost:3000/posts/sorted?start_date=2024-10-01T00:00:00.000Z&end_date=2024-10-30T00:00:00.000Z&order=ups``
+      http://localhost:3000/posts/sorted?start_date=2024-10-01T00:00:00.000Z&end_date=2024-10-30T00:00:00.000Z&order=ups
 
 Este endpoint realiza uma requisição HTTP GET para recuperar uma lista de posts ordenados por um intervalo de datas especificado e ordem.
 
@@ -79,6 +92,32 @@ Este endpoint realiza uma requisição HTTP GET para recuperar uma lista de post
 ### Resposta
 
 Após uma execução bem-sucedida, o servidor responderá com um código de status 200 e um array JSON contendo os posts ordenados, com a mesma estrutura descrita na seção de resposta acima.
+
+
+## 🧪 Testes
+
+Este projeto inclui testes automatizados para garantir o funcionamento correto da API. Os testes são escritos utilizando ``Jest`` e ``Supertest``.
+
+### Executando os Testes
+
+Para executar os testes, siga os passos abaixo:
+
+1. **Instale as Dependências**: Se você ainda não fez isso, instale as dependências do projeto:
+
+```bash
+npm install
+```
+
+2. **Executar os Testes:** Use o seguinte comando para rodar os testes:
+
+```bash
+npm test
+```
+
+⚠️ Certifique-se de que o MongoDB esteja em execução:
+```bash
+sudo systemctl start mongod
+```
 
 ## 👨‍💻 Autor
 
