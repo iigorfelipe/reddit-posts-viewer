@@ -8,6 +8,6 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist"
   },
-  "include": ["src/**/*"],
+  "include": ["jest.config.ts", "eslint.config.mjs", "src/**/*.ts", "__tests__/posts.test.ts"],
   "exclude": ["node_modules"]
 }
